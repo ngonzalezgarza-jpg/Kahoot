@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristina Chávez Rivera · Evaluación de Competencias</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',sans-serif;background:#F0F4F8;color:#1A1A2E;min-height:100vh}
+  .header{background:linear-gradient(135deg,#002C6F 0%,#003d9e 100%);padding:28px 24px 20px;position:relative;overflow:hidden}
+  .header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:#FF6B00}
+  .logo-area{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+  .logo{height:36px;filter:brightness(0) invert(1);opacity:.95}
+  .badge{background:rgba(255,107,0,.15);border:1px solid rgba(255,107,0,.4);color:#FFB066;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px}
+  .header h1{color:#fff;font-size:20px;font-weight:700;line-height:1.3}
+  .header p{color:#A8BBDD;font-size:13px;margin-top:6px}
+  .header .meta{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .meta-item{background:rgba(255,255,255,.08);border-radius:8px;padding:6px 12px;font-size:12px;color:#CBD9EE}
+  .meta-item span{color:#FF6B00;font-weight:600}
+  .progress-bar{background:rgba(255,255,255,.15);height:6px;border-radius:3px;margin-top:16px;overflow:hidden}
+  .progress-fill{height:100%;background:#FF6B00;border-radius:3px;transition:width .4s ease;width:0%}
+  .progress-label{color:#A8BBDD;font-size:11px;margin-top:6px;text-align:right}
+  .content{max-width:760px;margin:0 auto;padding:24px 16px 60px}
+  .section{background:#fff;border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.06);border:1px solid #E8EDF6}
+  .section-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#002C6F;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #FF6B00;display:flex;align-items:center;gap:8px}
+  .section-title::before{content:'';width:6px;height:6px;background:#FF6B00;border-radius:50%;flex-shrink:0}
+  .q-block{margin-bottom:18px;padding:16px;background:#F8FAFC;border-radius:12px;border-left:3px solid #002C6F}
+  .q-block.slider-block{border-left-color:#FF6B00}
+  .q-label{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:10px}
+  .q-label.scenario{background:#EEEDFE;color:#534AB7}
+  .q-label.quiz{background:#E1F5EE;color:#085041}
+  .q-label.slider{background:#FAEEDA;color:#633806}
+  .scenario-box{background:#EEF2FF;border-radius:8px;padding:12px 14px;margin-bottom:10px;font-size:13px;line-height:1.6;color:#2D3748;border-left:3px solid #002C6F}
+  .q-text{font-size:14px;font-weight:600;color:#1A1A2E;margin-bottom:12px;line-height:1.5}
+  .options{display:flex;flex-direction:column;gap:8px}
+  .option{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#fff;border:1.5px solid #E2E6EE;border-radius:10px;cursor:pointer;transition:all .2s}
+  .option:hover{border-color:#002C6F;background:#F0F4FF}
+  .option input[type=radio]{margin-top:2px;accent-color:#002C6F;flex-shrink:0}
+  .option-text{font-size:13px;color:#374151;line-height:1.5}
+  .option.selected{border-color:#002C6F;background:#EEF2FF}
+  .slider-container{padding:8px 4px}
+  .slider-labels{display:flex;justify-content:space-between;font-size:11px;color:#6B7280;margin-bottom:8px}
+  input[type=range]{width:100%;accent-color:#FF6B00;height:6px}
+  .slider-value{text-align:center;font-size:18px;font-weight:700;color:#FF6B00;margin-top:8px}
+  .submit-area{text-align:center;margin-top:28px}
+  .btn-submit{background:linear-gradient(135deg,#FF6B00,#e55a00);color:#fff;border:none;padding:16px 48px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(255,107,0,.3)}
+  .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,0,.4)}
+  .btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  .success{display:none;text-align:center;padding:48px 24px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .success h2{color:#002C6F;font-size:22px;margin-bottom:12px}
+  .success p{color:#6B7280;font-size:14px}
+  .success .check{font-size:56px;margin-bottom:16px}
+  .required-note{font-size:11px;color:#9CA3AF;text-align:center;margin-top:12px}
+  @media(max-width:600px){.header h1{font-size:17px}.content{padding:16px 12px 48px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo-area">
+    <img src="https://raw.githubusercontent.com/ngonzalezgarza-jpg/Tableros-RH-SCyF/main/logo_blanco.png" class="logo" alt="DEACERO">
+    <span class="badge">EVALUACIÓN DE COMPETENCIAS</span>
+  </div>
+  <h1>Cristina Chávez Rivera</h1>
+  <p>Product Co-Creator · Producto Digital</p>
+  <div class="meta">
+    <div class="meta-item">Área: <span>Producto Digital · TyD</span></div>
+    <div class="meta-item">Umbral: <span>70%</span></div>
+    <div class="meta-item">Julio 2026</div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">0 de 17 preguntas respondidas</div>
+</div>
+
+<div class="content">
+  <div id="formArea">
+    <div class="section"><div class="section-title">Competencias Transversales · TyD</div><div class="q-block" data-competencia="Orientación al valor del negocio" data-pregunta="¿Cómo decides cuál atender primero?"><span class="q-label scenario">Escenario</span><div class="scenario-box">La Dirección de TyD recibe al mismo tiempo tres solicitudes urgentes: una UdN pide avance en el pipeline de Order to Cash, otra necesita soporte para la estabilización del ERP, y Servicios Operativos reporta un riesgo en el proceso Source to Pay. Solo tienes recursos para atender una esta semana.</div><div class="q-text">¿Cómo decides cuál atender primero?</div><div class="options"><label class="option"><input type="radio" name="q1" value="Evalúo el impacto de negocio de cada solicitud — riesgo operativo, UdN afectada, alineación con los pilares estratégicos de SCyF y urgencia real — y priorizo con base en evidencia comunicando el criterio a los tres"><span class="option-text">Evalúo el impacto de negocio de cada solicitud — riesgo operativo, UdN afectada, alineación con los pilares estratégicos de SCyF y urgencia real — y priorizo con base en evidencia comunicando el criterio a los tres</span></label><label class="option"><input type="radio" name="q1" value="Coordino con mi líder para que tome la decisión de priorización — no quiero generar fricción con las UdNs sin respaldo de la Dirección"><span class="option-text">Coordino con mi líder para que tome la decisión de priorización — no quiero generar fricción con las UdNs sin respaldo de la Dirección</span></label><label class="option"><input type="radio" name="q1" value="Atiendo primero a quien tiene la fecha límite más cercana — la urgencia es el criterio más objetivo y defendible ante los stakeholders"><span class="option-text">Atiendo primero a quien tiene la fecha límite más cercana — la urgencia es el criterio más objetivo y defendible ante los stakeholders</span></label></div></div><div class="q-block slider-block" data-competencia="Orientación al valor del negocio" data-pregunta="¿Qué tan claramente puedes articular cómo tu trabajo contribuye a la MEGA de SCyF de duplicar la productividad para 2028 — más allá de cumplir con tus entregables del día a día?"><span class="q-label slider">Automedición</span><div class="q-text">¿Qué tan claramente puedes articular cómo tu trabajo contribuye a la MEGA de SCyF de duplicar la productividad para 2028 — más allá de cumplir con tus entregables del día a día?</div><div class="slider-container"><div class="slider-labels"><span>Rara vez lo pienso en esos términos</span><span>Siempre tengo clara la conexión entre mi trabajo y el impacto estratégico</span></div><input type="range" id="q2" min="1" max="5" value="3"><div class="slider-value" id="val_q2">3</div></div></div><div class="q-block" data-competencia="Comunicación ejecutiva" data-pregunta="¿Cómo estructuras tu mensaje?"><span class="q-label scenario">Escenario</span><div class="scenario-box">El Subdirector del área te pide que en 10 minutos le expliques por qué un proyecto crítico lleva 3 semanas de retraso. Hay causas legítimas pero también hubo una decisión inicial que pudo haberse tomado mejor.</div><div class="q-text">¿Cómo estructuras tu mensaje?</div><div class="options"><label class="option"><input type="radio" name="q3" value="Presento el estado real con honestidad — qué pasó, cuáles fueron las causas incluyendo la decisión inicial, qué aprendimos y cuál es el plan concreto con fechas para recuperar"><span class="option-text">Presento el estado real con honestidad — qué pasó, cuáles fueron las causas incluyendo la decisión inicial, qué aprendimos y cuál es el plan concreto con fechas para recuperar</span></label><label class="option"><input type="radio" name="q3" value="Me enfoco en las causas externas — son las más objetivas y no quiero que la conversación se vaya a decisiones pasadas que ya no se pueden cambiar"><span class="option-text">Me enfoco en las causas externas — son las más objetivas y no quiero que la conversación se vaya a decisiones pasadas que ya no se pueden cambiar</span></label><label class="option"><input type="radio" name="q3" value="Preparo un reporte escrito antes de la reunión para que el Subdirector llegue con contexto y en los 10 minutos me enfoco solo en el plan de acción"><span class="option-text">Preparo un reporte escrito antes de la reunión para que el Subdirector llegue con contexto y en los 10 minutos me enfoco solo en el plan de acción</span></label></div></div><div class="q-block slider-block" data-competencia="Comunicación ejecutiva" data-pregunta="Cuando tienes que comunicar un problema complejo a un stakeholder no técnico — un director de UdN o el Subdirector — ¿qué tan efectivamente logras traducirlo al lenguaje del negocio sin perder precisión?"><span class="q-label slider">Automedición</span><div class="q-text">Cuando tienes que comunicar un problema complejo a un stakeholder no técnico — un director de UdN o el Subdirector — ¿qué tan efectivamente logras traducirlo al lenguaje del negocio sin perder precisión?</div><div class="slider-container"><div class="slider-labels"><span>Me cuesta mucho simplificarlo sin perder exactitud</span><span>Lo traduzco con naturalidad al impacto y lenguaje del negocio</span></div><input type="range" id="q4" min="1" max="5" value="3"><div class="slider-value" id="val_q4">3</div></div></div><div class="q-block" data-competencia="Colaboración transversal" data-pregunta="¿Qué haces?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Trabajas en una iniciativa estratégica que depende de información que administra otra área. Llevan 2 semanas sin entregar lo necesario. Tu contraparte dice que tiene otras prioridades. El lanzamiento está en riesgo.</div><div class="q-text">¿Qué haces?</div><div class="options"><label class="option"><input type="radio" name="q5" value="Contacto directamente a mi contraparte para entender qué la bloquea, propongo una alternativa temporal y si en 48 horas no hay avance escalo a mi líder con contexto y propuesta"><span class="option-text">Contacto directamente a mi contraparte para entender qué la bloquea, propongo una alternativa temporal y si en 48 horas no hay avance escalo a mi líder con contexto y propuesta</span></label><label class="option"><input type="radio" name="q5" value="Escalo a mi líder de inmediato — los bloqueos entre áreas en proyectos estratégicos requieren autoridad para resolverse rápido"><span class="option-text">Escalo a mi líder de inmediato — los bloqueos entre áreas en proyectos estratégicos requieren autoridad para resolverse rápido</span></label><label class="option"><input type="radio" name="q5" value="Rediseño la primera entrega para no depender de esa área y los incorporo en una segunda fase — prefiero avanzar con lo que tengo que paralizar al equipo"><span class="option-text">Rediseño la primera entrega para no depender de esa área y los incorporo en una segunda fase — prefiero avanzar con lo que tengo que paralizar al equipo</span></label></div></div><div class="q-block slider-block" data-competencia="Colaboración transversal" data-pregunta="En tu trabajo en una estructura matricial, ¿qué tan efectivamente navegas las prioridades cruzadas sin generar fricción ni perder el foco?"><span class="q-label slider">Automedición</span><div class="q-text">En tu trabajo en una estructura matricial, ¿qué tan efectivamente navegas las prioridades cruzadas sin generar fricción ni perder el foco?</div><div class="slider-container"><div class="slider-labels"><span>Me genera tensión y a veces no sé a quién priorizar</span><span>Lo navego con claridad, alineando expectativas con todos los involucrados</span></div><input type="range" id="q6" min="1" max="5" value="3"><div class="slider-value" id="val_q6">3</div></div></div><div class="q-block" data-competencia="Mentalidad ágil" data-pregunta="¿Cómo procedes?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Llevas 5 semanas trabajando en una iniciativa. La Dirección anuncia un cambio que haría obsoleto parte del trabajo actual antes de entrar en producción.</div><div class="q-text">¿Cómo procedes?</div><div class="options"><label class="option"><input type="radio" name="q7" value="Evalúo qué parte de lo construido es reutilizable en el nuevo contexto, avanzo en eso y documento el resto como insumo — no paro todo pero tampoco ignoro la nueva realidad"><span class="option-text">Evalúo qué parte de lo construido es reutilizable en el nuevo contexto, avanzo en eso y documento el resto como insumo — no paro todo pero tampoco ignoro la nueva realidad</span></label><label class="option"><input type="radio" name="q7" value="Pauso el desarrollo hasta tener más claridad — construir algo obsoleto es retrabajo innecesario"><span class="option-text">Pauso el desarrollo hasta tener más claridad — construir algo obsoleto es retrabajo innecesario</span></label><label class="option"><input type="radio" name="q7" value="Continúo como estaba planeado — la solución tiene valor operativo inmediato y hay tiempo suficiente para generar aprendizajes"><span class="option-text">Continúo como estaba planeado — la solución tiene valor operativo inmediato y hay tiempo suficiente para generar aprendizajes</span></label></div></div><div class="q-block" data-competencia="Mentalidad ágil" data-pregunta="En un entorno de transformación digital acelerada — MEGA de duplicar productividad para 2028 — ¿cuál describe mejor tu relación con los cambios de tecnología o dirección estratégica?"><span class="q-label quiz">Pregunta</span><div class="q-text">En un entorno de transformación digital acelerada — MEGA de duplicar productividad para 2028 — ¿cuál describe mejor tu relación con los cambios de tecnología o dirección estratégica?</div><div class="options"><label class="option"><input type="radio" name="q8" value="Los veo como información que ajusta el rumbo — me reoriento rápido y enfoco mi energía en lo que sí aplica en el nuevo contexto"><span class="option-text">Los veo como información que ajusta el rumbo — me reoriento rápido y enfoco mi energía en lo que sí aplica en el nuevo contexto</span></label><label class="option"><input type="radio" name="q8" value="Me toma tiempo adaptarme — prefiero entender bien el porqué del cambio antes de moverme"><span class="option-text">Me toma tiempo adaptarme — prefiero entender bien el porqué del cambio antes de moverme</span></label><label class="option"><input type="radio" name="q8" value="Me generan tensión cuando hay trabajo invertido — aunque acepto el cambio, me cuesta soltar lo que ya construí"><span class="option-text">Me generan tensión cuando hay trabajo invertido — aunque acepto el cambio, me cuesta soltar lo que ya construí</span></label></div></div></div><div class="section"><div class="section-title">Competencias del Área · Producto Digital</div><div class="q-block" data-competencia="Gestión de producto digital" data-pregunta="¿Cómo lo manejas?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Llevas 2 meses en el desarrollo de un producto digital para una UdN. A mitad del desarrollo la UdN te pide agregar 5 funcionalidades nuevas que 'surgieron en una junta'. Las 5 funcionalidades duplicarían el tiempo de desarrollo y pondrían en riesgo la fecha de entrega comprometida.</div><div class="q-text">¿Cómo lo manejas?</div><div class="options"><label class="option"><input type="radio" name="q9" value="Evalúo las 5 funcionalidades con base en impacto al usuario y esfuerzo de desarrollo — presento a la UdN cuáles pueden entrar en el alcance actual sin afectar la fecha y cuáles van al siguiente ciclo, con el criterio de priorización claro"><span class="option-text">Evalúo las 5 funcionalidades con base en impacto al usuario y esfuerzo de desarrollo — presento a la UdN cuáles pueden entrar en el alcance actual sin afectar la fecha y cuáles van al siguiente ciclo, con el criterio de priorización claro</span></label><label class="option"><input type="radio" name="q9" value="Agrego las 5 funcionalidades y ajusto la fecha de entrega — si la UdN las necesita, el producto sin ellas no va a ser útil"><span class="option-text">Agrego las 5 funcionalidades y ajusto la fecha de entrega — si la UdN las necesita, el producto sin ellas no va a ser útil</span></label><label class="option"><input type="radio" name="q9" value="Rechazo las 5 funcionalidades — el alcance ya fue acordado y cambiarlo a mitad del desarrollo es una mala práctica de gestión de proyectos"><span class="option-text">Rechazo las 5 funcionalidades — el alcance ya fue acordado y cambiarlo a mitad del desarrollo es una mala práctica de gestión de proyectos</span></label></div></div><div class="q-block slider-block" data-competencia="Gestión de producto digital" data-pregunta="¿Qué tan efectivamente gestionas el backlog de tu producto — con priorización clara por valor para el usuario y el negocio, criterios de aceptación definidos y estimaciones realistas?"><span class="q-label slider">Automedición</span><div class="q-text">¿Qué tan efectivamente gestionas el backlog de tu producto — con priorización clara por valor para el usuario y el negocio, criterios de aceptación definidos y estimaciones realistas?</div><div class="slider-container"><div class="slider-labels"><span>El backlog es una lista de solicitudes sin priorización clara ni criterios de aceptación</span><span>El backlog está priorizado, documentado y el equipo puede ejecutar de forma autónoma sin necesitar que yo explique cada historia</span></div><input type="range" id="q10" min="1" max="5" value="3"><div class="slider-value" id="val_q10">3</div></div></div><div class="q-block" data-competencia="Pensamiento centrado en el usuario" data-pregunta="¿Qué haces?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Entregaste un producto digital hace 6 semanas. Los datos de uso muestran que los usuarios completan el flujo principal pero el 70% abandona antes de llegar a la funcionalidad más importante del producto. Los usuarios no se quejan pero tampoco la usan.</div><div class="q-text">¿Qué haces?</div><div class="options"><label class="option"><input type="radio" name="q11" value="Investigo directamente con los usuarios por qué abandonan antes de llegar a esa funcionalidad — ¿hay fricción en el flujo? ¿no saben que existe? ¿no la necesitan realmente? Con esa información decido si es un problema de UX, de comunicación o de diseño del producto"><span class="option-text">Investigo directamente con los usuarios por qué abandonan antes de llegar a esa funcionalidad — ¿hay fricción en el flujo? ¿no saben que existe? ¿no la necesitan realmente? Con esa información decido si es un problema de UX, de comunicación o de diseño del producto</span></label><label class="option"><input type="radio" name="q11" value="Rediseño el flujo para que la funcionalidad importante sea más visible y accesible — si el 70% no llega a ella, probablemente el diseño no la está destacando suficientemente"><span class="option-text">Rediseño el flujo para que la funcionalidad importante sea más visible y accesible — si el 70% no llega a ella, probablemente el diseño no la está destacando suficientemente</span></label><label class="option"><input type="radio" name="q11" value="Le pregunto a la UdN si la funcionalidad sigue siendo relevante — si los usuarios no la usan, quizás el negocio ya no la necesita"><span class="option-text">Le pregunto a la UdN si la funcionalidad sigue siendo relevante — si los usuarios no la usan, quizás el negocio ya no la necesita</span></label></div></div><div class="q-block slider-block" data-competencia="Pensamiento centrado en el usuario" data-pregunta="¿Qué tan frecuentemente tienes contacto directo con los usuarios finales de los productos digitales que construyes — más allá de lo que la UdN te reporta sobre su experiencia?"><span class="q-label slider">Automedición</span><div class="q-text">¿Qué tan frecuentemente tienes contacto directo con los usuarios finales de los productos digitales que construyes — más allá de lo que la UdN te reporta sobre su experiencia?</div><div class="slider-container"><div class="slider-labels"><span>Casi nunca, mi contacto con usuarios finales es a través de la UdN</span><span>Tengo contacto directo y regular con usuarios finales para entender su experiencia real</span></div><input type="range" id="q12" min="1" max="5" value="3"><div class="slider-value" id="val_q12">3</div></div></div><div class="q-block" data-competencia="Continuidad operativa y soporte de productos" data-pregunta="¿Qué haces?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Un producto digital que lanzaste hace 3 meses presenta una falla en producción que afecta a 200 usuarios. La falla no impide operar completamente pero sí genera errores intermitentes que están afectando la confianza de los usuarios en el producto. El equipo técnico estima 2 días para la solución definitiva.</div><div class="q-text">¿Qué haces?</div><div class="options"><label class="option"><input type="radio" name="q13" value="Comunico de inmediato a la UdN la situación con claridad — qué está pasando, cuántos usuarios están afectados, qué workaround existe mientras se resuelve la falla definitiva, y el timeline de resolución — sin esperar a que me pregunten"><span class="option-text">Comunico de inmediato a la UdN la situación con claridad — qué está pasando, cuántos usuarios están afectados, qué workaround existe mientras se resuelve la falla definitiva, y el timeline de resolución — sin esperar a que me pregunten</span></label><label class="option"><input type="radio" name="q13" value="Espero a que el equipo técnico resuelva la falla antes de comunicar a la UdN — comunicar un problema antes de tener la solución puede generar alarma innecesaria"><span class="option-text">Espero a que el equipo técnico resuelva la falla antes de comunicar a la UdN — comunicar un problema antes de tener la solución puede generar alarma innecesaria</span></label><label class="option"><input type="radio" name="q13" value="Le pido al equipo técnico que priorice la resolución sin comunicar a la UdN — si la falla no impide operar completamente, podemos resolverla sin generar ruido"><span class="option-text">Le pido al equipo técnico que priorice la resolución sin comunicar a la UdN — si la falla no impide operar completamente, podemos resolverla sin generar ruido</span></label></div></div><div class="q-block slider-block" data-competencia="Continuidad operativa y soporte de productos" data-pregunta="¿Qué tan proactivamente monitoreas la salud operativa de los productos digitales que tienes bajo tu responsabilidad — detectando problemas antes de que los usuarios los reporten?"><span class="q-label slider">Automedición</span><div class="q-text">¿Qué tan proactivamente monitoreas la salud operativa de los productos digitales que tienes bajo tu responsabilidad — detectando problemas antes de que los usuarios los reporten?</div><div class="slider-container"><div class="slider-labels"><span>Principalmente reacciono cuando hay un reporte de problema</span><span>Tengo métricas de salud monitoreadas activamente y detecto la mayoría de problemas antes de que impacten a los usuarios</span></div><input type="range" id="q14" min="1" max="5" value="3"><div class="slider-value" id="val_q14">3</div></div></div></div><div class="section"><div class="section-title">Competencias del Rol</div><div class="q-block" data-competencia="Co-creación y entrega de valor de producto" data-pregunta="¿Cómo lo manejas?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Estás en un proceso de discovery con una UdN para definir el siguiente ciclo de desarrollo de un producto digital. El líder de la UdN te presenta 12 iniciativas que 'todas son urgentes e importantes'. Tienes capacidad real para atender 3 en el próximo trimestre.</div><div class="q-text">¿Cómo lo manejas?</div><div class="options"><label class="option"><input type="radio" name="q15" value="Facilito un ejercicio de priorización con la UdN usando criterios de impacto al negocio y esfuerzo — y llegamos juntos a las 3 iniciativas del trimestre, con el argumento de cada una documentado y los criterios de lo que quedó fuera también claros"><span class="option-text">Facilito un ejercicio de priorización con la UdN usando criterios de impacto al negocio y esfuerzo — y llegamos juntos a las 3 iniciativas del trimestre, con el argumento de cada una documentado y los criterios de lo que quedó fuera también claros</span></label><label class="option"><input type="radio" name="q15" value="Le digo a la UdN que con la capacidad disponible solo puedo atender 3 y le pido que me diga cuáles — la priorización es responsabilidad de la UdN, no mía"><span class="option-text">Le digo a la UdN que con la capacidad disponible solo puedo atender 3 y le pido que me diga cuáles — la priorización es responsabilidad de la UdN, no mía</span></label><label class="option"><input type="radio" name="q15" value="Propongo dividir el esfuerzo entre las 12 iniciativas para avanzar en todas aunque sea parcialmente — si todas son urgentes, no puedo dejar ninguna sin atención"><span class="option-text">Propongo dividir el esfuerzo entre las 12 iniciativas para avanzar en todas aunque sea parcialmente — si todas son urgentes, no puedo dejar ninguna sin atención</span></label></div></div><div class="q-block slider-block" data-competencia="Co-creación y entrega de valor de producto" data-pregunta="¿Qué tan efectivamente logras traducir las necesidades operativas de una UdN en requerimientos funcionales claros que el equipo técnico pueda construir sin ambigüedades?"><span class="q-label slider">Automedición</span><div class="q-text">¿Qué tan efectivamente logras traducir las necesidades operativas de una UdN en requerimientos funcionales claros que el equipo técnico pueda construir sin ambigüedades?</div><div class="slider-container"><div class="slider-labels"><span>Frecuentemente hay gaps entre lo que la UdN quería y lo que se construyó</span><span>Mis requerimientos son claros y el equipo técnico raramente necesita volver a preguntar qué construir</span></div><input type="range" id="q16" min="1" max="5" value="3"><div class="slider-value" id="val_q16">3</div></div></div><div class="q-block" data-competencia="Co-creación y entrega de valor de producto" data-pregunta="¿Cuál describe mejor tu proceso para validar que una funcionalidad que se construyó responde a la necesidad real del usuario?"><span class="q-label quiz">Pregunta</span><div class="q-text">¿Cuál describe mejor tu proceso para validar que una funcionalidad que se construyó responde a la necesidad real del usuario?</div><div class="options"><label class="option"><input type="radio" name="q17" value="Hago pruebas con usuarios reales antes de dar por cerrada la funcionalidad — el criterio no es si técnicamente funciona sino si el usuario puede hacer con ella lo que necesitaba hacer"><span class="option-text">Hago pruebas con usuarios reales antes de dar por cerrada la funcionalidad — el criterio no es si técnicamente funciona sino si el usuario puede hacer con ella lo que necesitaba hacer</span></label><label class="option"><input type="radio" name="q17" value="Valido con el líder de la UdN que la funcionalidad cumple con el requerimiento que definimos — si el requerimiento estaba bien definido, el líder puede validar"><span class="option-text">Valido con el líder de la UdN que la funcionalidad cumple con el requerimiento que definimos — si el requerimiento estaba bien definido, el líder puede validar</span></label><label class="option"><input type="radio" name="q17" value="Reviso que la funcionalidad cumpla con los criterios de aceptación que documenté — si los criterios estaban bien definidos, cumplirlos es suficiente evidencia de que la necesidad fue atendida"><span class="option-text">Reviso que la funcionalidad cumpla con los criterios de aceptación que documenté — si los criterios estaban bien definidos, cumplirlos es suficiente evidencia de que la necesidad fue atendida</span></label></div></div></div>
+    <div class="submit-area">
+      <button class="btn-submit" id="btnSubmit" onclick="submitForm()">Enviar evaluación</button>
+      <p class="required-note">Todas las preguntas son requeridas antes de enviar</p>
+    </div>
+  </div>
+  <div class="success" id="successMsg">
+    <div class="check">✅</div>
+    <h2>¡Evaluación enviada!</h2>
+    <p>Gracias por completar tu autoevaluación de competencias.<br>El equipo de RH revisará tus respuestas.</p>
+  </div>
+</div>
+
+<script>
+const SHEETDB_URL = 'https://sheetdb.io/api/v1/jo9ara9caqac2';
+const nombre = 'Cristina Chávez Rivera';
+const puesto = 'Product Co-Creator · Producto Digital';
+const totalPreguntas = 17;
+
+document.querySelectorAll('.option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const radio = opt.querySelector('input[type=radio]');
+    const name = radio.name;
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.closest('.option').classList.remove('selected'));
+    radio.checked = true;
+    opt.classList.add('selected');
+    updateProgress();
+  });
+});
+
+document.querySelectorAll('input[type=range]').forEach(sl => {
+  sl.addEventListener('input', () => {
+    document.getElementById('val_' + sl.id).textContent = sl.value;
+    updateProgress();
+  });
+});
+
+function updateProgress() {
+  let answered = 0;
+  document.querySelectorAll('input[type=radio]:checked').forEach(() => answered++);
+  document.querySelectorAll('input[type=range]').forEach(sl => {
+    if(sl.dataset.touched === 'true') answered++;
+  });
+  const pct = Math.round((answered / totalPreguntas) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = answered + ' de ' + totalPreguntas + ' preguntas respondidas';
+}
+
+document.querySelectorAll('input[type=range]').forEach(sl => {
+  sl.addEventListener('change', () => { sl.dataset.touched = 'true'; updateProgress(); });
+});
+
+async function submitForm() {
+  const radios = document.querySelectorAll('.q-block:not(.slider-block) input[type=radio]');
+  const radioGroups = new Set();
+  radios.forEach(r => radioGroups.add(r.name));
+  let allAnswered = true;
+  radioGroups.forEach(name => {
+    if(!document.querySelector(`input[name="${name}"]:checked`)) allAnswered = false;
+  });
+  document.querySelectorAll('input[type=range]').forEach(sl => {
+    if(sl.dataset.touched !== 'true') allAnswered = false;
+  });
+  if(!allAnswered) { alert('Por favor responde todas las preguntas antes de enviar.'); return; }
+  
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  
+  const rows = [];
+  const ts = new Date().toLocaleString('es-MX');
+  
+  radioGroups.forEach(name => {
+    const checked = document.querySelector(`input[name="${name}"]:checked`);
+    const block = checked.closest('.q-block');
+    const competencia = block.dataset.competencia || '';
+    const pregunta = block.dataset.pregunta || '';
+    const respuesta = checked.value;
+    rows.push({Timestamp:ts, Nombre:nombre, Puesto:puesto, Competencia:competencia, Pregunta:pregunta, Tipo:'opcion', Respuesta:respuesta});
+  });
+  
+  document.querySelectorAll('input[type=range]').forEach(sl => {
+    const block = sl.closest('.q-block');
+    const competencia = block.dataset.competencia || '';
+    const pregunta = block.dataset.pregunta || '';
+    rows.push({Timestamp:ts, Nombre:nombre, Puesto:puesto, Competencia:competencia, Pregunta:pregunta, Tipo:'slider', Respuesta:sl.value + '/5'});
+  });
+  
+  try {
+    for(const row of rows) {
+      await fetch(SHEETDB_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({data:[row]})});
+    }
+    document.getElementById('formArea').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } catch(e) {
+    alert('Hubo un error al enviar. Intenta de nuevo.');
+    btn.disabled = false; btn.textContent = 'Enviar evaluación';
+  }
+}
+</script>
+</body>
+</html>

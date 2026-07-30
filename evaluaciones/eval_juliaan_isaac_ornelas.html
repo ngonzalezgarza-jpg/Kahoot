@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juliaan Isaac Ornelas · Evaluación de Competencias</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',sans-serif;background:#F0F4F8;color:#1A1A2E;min-height:100vh}
+  .header{background:linear-gradient(135deg,#002C6F 0%,#003d9e 100%);padding:28px 24px 20px;position:relative;overflow:hidden}
+  .header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:#FF6B00}
+  .logo-area{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+  .logo{height:36px;filter:brightness(0) invert(1);opacity:.95}
+  .badge{background:rgba(255,107,0,.15);border:1px solid rgba(255,107,0,.4);color:#FFB066;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px}
+  .header h1{color:#fff;font-size:20px;font-weight:700;line-height:1.3}
+  .header p{color:#A8BBDD;font-size:13px;margin-top:6px}
+  .header .meta{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .meta-item{background:rgba(255,255,255,.08);border-radius:8px;padding:6px 12px;font-size:12px;color:#CBD9EE}
+  .meta-item span{color:#FF6B00;font-weight:600}
+  .progress-bar{background:rgba(255,255,255,.15);height:6px;border-radius:3px;margin-top:16px;overflow:hidden}
+  .progress-fill{height:100%;background:#FF6B00;border-radius:3px;transition:width .4s ease;width:0%}
+  .progress-label{color:#A8BBDD;font-size:11px;margin-top:6px;text-align:right}
+  .content{max-width:760px;margin:0 auto;padding:24px 16px 60px}
+  .section{background:#fff;border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.06);border:1px solid #E8EDF6}
+  .section-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#002C6F;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #FF6B00;display:flex;align-items:center;gap:8px}
+  .section-title::before{content:'';width:6px;height:6px;background:#FF6B00;border-radius:50%;flex-shrink:0}
+  .q-block{margin-bottom:18px;padding:16px;background:#F8FAFC;border-radius:12px;border-left:3px solid #002C6F}
+  .q-block.slider-block{border-left-color:#FF6B00}
+  .q-label{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:10px}
+  .q-label.scenario{background:#EEEDFE;color:#534AB7}
+  .q-label.quiz{background:#E1F5EE;color:#085041}
+  .q-label.slider{background:#FAEEDA;color:#633806}
+  .scenario-box{background:#EEF2FF;border-radius:8px;padding:12px 14px;margin-bottom:10px;font-size:13px;line-height:1.6;color:#2D3748;border-left:3px solid #002C6F}
+  .q-text{font-size:14px;font-weight:600;color:#1A1A2E;margin-bottom:12px;line-height:1.5}
+  .options{display:flex;flex-direction:column;gap:8px}
+  .option{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#fff;border:1.5px solid #E2E6EE;border-radius:10px;cursor:pointer;transition:all .2s}
+  .option:hover{border-color:#002C6F;background:#F0F4FF}
+  .option input[type=radio]{margin-top:2px;accent-color:#002C6F;flex-shrink:0}
+  .option-text{font-size:13px;color:#374151;line-height:1.5}
+  .option.selected{border-color:#002C6F;background:#EEF2FF}
+  .slider-container{padding:8px 4px}
+  .slider-labels{display:flex;justify-content:space-between;font-size:11px;color:#6B7280;margin-bottom:8px}
+  input[type=range]{width:100%;accent-color:#FF6B00;height:6px}
+  .slider-value{text-align:center;font-size:18px;font-weight:700;color:#FF6B00;margin-top:8px}
+  .submit-area{text-align:center;margin-top:28px}
+  .btn-submit{background:linear-gradient(135deg,#FF6B00,#e55a00);color:#fff;border:none;padding:16px 48px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(255,107,0,.3)}
+  .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,0,.4)}
+  .btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  .success{display:none;text-align:center;padding:48px 24px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .success h2{color:#002C6F;font-size:22px;margin-bottom:12px}
+  .success p{color:#6B7280;font-size:14px}
+  .success .check{font-size:56px;margin-bottom:16px}
+  .required-note{font-size:11px;color:#9CA3AF;text-align:center;margin-top:12px}
+  @media(max-width:600px){.header h1{font-size:17px}.content{padding:16px 12px 48px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo-area">
+    <img src="https://raw.githubusercontent.com/ngonzalezgarza-jpg/Tableros-RH-SCyF/main/logo_blanco.png" class="logo" alt="DEACERO">
+    <span class="badge">EVALUACIÓN DE COMPETENCIAS</span>
+  </div>
+  <h1>Juliaan Isaac Ornelas</h1>
+  <p>Practicante Transformación y Digital</p>
+  <div class="meta">
+    <div class="meta-item">Área: <span>Gestión de Datos y Analítica</span></div>
+    <div class="meta-item">Umbral: <span>60%</span></div>
+    <div class="meta-item">Julio 2026</div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">0 de 13 preguntas respondidas</div>
+</div>
+
+<div class="content">
+  <div id="formArea">
+    <div class="section"><div class="section-title">Competencias Transversales · Todos los Practicantes TyD</div><div class="q-block" data-competencia="Actitud de aprendizaje" data-pregunta="¿Qué haces?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Llevas 2 semanas en tu práctica y tu líder te pide que hagas una tarea usando una herramienta que nunca has usado. No sabes por dónde empezar y no quieres hacer el ridículo preguntando algo muy básico.</div><div class="q-text">¿Qué haces?</div><div class="options"><label class="option"><input type="radio" name="q1" value="Busco primero en la documentación disponible y en internet para entender lo básico — y si después de intentarlo sigo sin avanzar, le pregunto a mi líder con contexto de lo que ya intenté"><span class="option-text">Busco primero en la documentación disponible y en internet para entender lo básico — y si después de intentarlo sigo sin avanzar, le pregunto a mi líder con contexto de lo que ya intenté</span></label><label class="option"><input type="radio" name="q1" value="Espero a ver si en los siguientes días alguien lo menciona o surge la oportunidad de aprenderlo de forma más natural — no quiero parecer que no sé nada"><span class="option-text">Espero a ver si en los siguientes días alguien lo menciona o surge la oportunidad de aprenderlo de forma más natural — no quiero parecer que no sé nada</span></label><label class="option"><input type="radio" name="q1" value="Le digo a mi líder desde el principio que no conozco la herramienta y le pido que me enseñe antes de arrancar — es mejor ser honesto que perder tiempo intentando solo"><span class="option-text">Le digo a mi líder desde el principio que no conozco la herramienta y le pido que me enseñe antes de arrancar — es mejor ser honesto que perder tiempo intentando solo</span></label></div></div><div class="q-block slider-block" data-competencia="Actitud de aprendizaje" data-pregunta="Cuando recibes retroalimentación de tu líder o compañero sobre algo que hiciste mal, ¿qué tan fácil te resulta recibirla con apertura y usarla para mejorar — sin ponerte a la defensiva?"><span class="q-label slider">Automedición</span><div class="q-text">Cuando recibes retroalimentación de tu líder o compañero sobre algo que hiciste mal, ¿qué tan fácil te resulta recibirla con apertura y usarla para mejorar — sin ponerte a la defensiva?</div><div class="slider-container"><div class="slider-labels"><span>Me cuesta trabajo, tiendo a sentirme mal o a justificarme</span><span>La recibo con apertura y la convierto en acción de mejora de inmediato</span></div><input type="range" id="q2" min="1" max="5" value="3"><div class="slider-value" id="val_q2">3</div></div></div><div class="q-block" data-competencia="Comunicación y trabajo en equipo" data-pregunta="¿Qué haces?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Tienes un entregable para el viernes. Es miércoles y te das cuenta de que no vas a poder terminarlo a tiempo porque encontraste un problema que no anticipabas. Tu líder está muy ocupado esta semana.</div><div class="q-text">¿Qué haces?</div><div class="options"><label class="option"><input type="radio" name="q3" value="Le aviso a mi líder ese mismo día — con el contexto del problema que encontré y una propuesta de qué puedo entregar el viernes aunque sea parcial — para que no se lleve una sorpresa"><span class="option-text">Le aviso a mi líder ese mismo día — con el contexto del problema que encontré y una propuesta de qué puedo entregar el viernes aunque sea parcial — para que no se lleve una sorpresa</span></label><label class="option"><input type="radio" name="q3" value="Trabajo el doble para ver si puedo alcanzar la fecha aunque sea entregando algo incompleto — avisar de un retraso puede dar mala impresión tan temprano en la práctica"><span class="option-text">Trabajo el doble para ver si puedo alcanzar la fecha aunque sea entregando algo incompleto — avisar de un retraso puede dar mala impresión tan temprano en la práctica</span></label><label class="option"><input type="radio" name="q3" value="Espero al jueves para ver cómo voy — quizás lo resuelvo y no tiene caso preocupar a mi líder antes de tiempo"><span class="option-text">Espero al jueves para ver cómo voy — quizás lo resuelvo y no tiene caso preocupar a mi líder antes de tiempo</span></label></div></div><div class="q-block" data-competencia="Comunicación y trabajo en equipo" data-pregunta="Cuando trabajas en algo junto con otro practicante o con alguien del equipo y tienen opiniones diferentes sobre cómo hacerlo, ¿qué haces?"><span class="q-label quiz">Pregunta</span><div class="q-text">Cuando trabajas en algo junto con otro practicante o con alguien del equipo y tienen opiniones diferentes sobre cómo hacerlo, ¿qué haces?</div><div class="options"><label class="option"><input type="radio" name="q4" value="Escucho su punto de vista con genuina apertura, explico el mío con argumentos concretos, y si no llegamos a un acuerdo le pregunto a nuestro líder cuál es la dirección correcta"><span class="option-text">Escucho su punto de vista con genuina apertura, explico el mío con argumentos concretos, y si no llegamos a un acuerdo le pregunto a nuestro líder cuál es la dirección correcta</span></label><label class="option"><input type="radio" name="q4" value="Cedo rápido para no generar conflicto — prefiero que el ambiente sea bueno aunque no estemos haciendo las cosas de la mejor manera"><span class="option-text">Cedo rápido para no generar conflicto — prefiero que el ambiente sea bueno aunque no estemos haciendo las cosas de la mejor manera</span></label><label class="option"><input type="radio" name="q4" value="Defiendo mi forma porque si yo lo investigué probablemente tengo razón — ceder sin razón técnica me parece innecesario"><span class="option-text">Defiendo mi forma porque si yo lo investigué probablemente tengo razón — ceder sin razón técnica me parece innecesario</span></label></div></div><div class="q-block" data-competencia="Responsabilidad y manejo de compromisos" data-pregunta="¿Qué haces?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Tu líder te asignó documentar un proceso y te explicó cómo hacerlo. Al arrancar te das cuenta de que hay partes que no entendiste bien y si sigues así vas a documentar algo incorrecto.</div><div class="q-text">¿Qué haces?</div><div class="options"><label class="option"><input type="radio" name="q5" value="Paro, anoto específicamente qué partes no entendí y le pregunto a mi líder — es mucho mejor preguntar ahora que entregar algo incorrecto que tenga que rehacerse"><span class="option-text">Paro, anoto específicamente qué partes no entendí y le pregunto a mi líder — es mucho mejor preguntar ahora que entregar algo incorrecto que tenga que rehacerse</span></label><label class="option"><input type="radio" name="q5" value="Intento interpretar lo que creo que dijo mi líder y avanzo — si me equivoqué lo corrijo después, pero al menos no interrumpo al líder con preguntas"><span class="option-text">Intento interpretar lo que creo que dijo mi líder y avanzo — si me equivoqué lo corrijo después, pero al menos no interrumpo al líder con preguntas</span></label><label class="option"><input type="radio" name="q5" value="Busco en internet o en documentos del área algo que me ayude a llenar los vacíos — prefiero no preguntar algo que debería haber entendido desde el principio"><span class="option-text">Busco en internet o en documentos del área algo que me ayude a llenar los vacíos — prefiero no preguntar algo que debería haber entendido desde el principio</span></label></div></div><div class="q-block slider-block" data-competencia="Responsabilidad y manejo de compromisos" data-pregunta="¿Qué tan consistente eres en cumplir lo que te comprometes — entregar en la fecha que dijiste, avisar si algo cambia, hacer seguimiento sin que te lo pidan?"><span class="q-label slider">Automedición</span><div class="q-text">¿Qué tan consistente eres en cumplir lo que te comprometes — entregar en la fecha que dijiste, avisar si algo cambia, hacer seguimiento sin que te lo pidan?</div><div class="slider-container"><div class="slider-labels"><span>A veces se me olvida o lo dejo para después</span><span>Soy muy consistente, cumplo lo que digo y aviso con tiempo si algo cambia</span></div><input type="range" id="q6" min="1" max="5" value="3"><div class="slider-value" id="val_q6">3</div></div></div><div class="q-block" data-competencia="Iniciativa y orientación al resultado" data-pregunta="Terminaste tu tarea antes de lo esperado y tienes tiempo libre antes de que llegue tu siguiente asignación. ¿Qué haces?"><span class="q-label quiz">Pregunta</span><div class="q-text">Terminaste tu tarea antes de lo esperado y tienes tiempo libre antes de que llegue tu siguiente asignación. ¿Qué haces?</div><div class="options"><label class="option"><input type="radio" name="q7" value="Le digo a mi líder que terminé y le pregunto si hay algo más en lo que pueda contribuir — aprovechar el tiempo para aprender o apoyar al equipo me parece lo correcto"><span class="option-text">Le digo a mi líder que terminé y le pregunto si hay algo más en lo que pueda contribuir — aprovechar el tiempo para aprender o apoyar al equipo me parece lo correcto</span></label><label class="option"><input type="radio" name="q7" value="Aprovecho para avanzar en mis materias o en cosas personales — no tengo más tarea asignada y nadie me va a pedir cuentas de ese tiempo"><span class="option-text">Aprovecho para avanzar en mis materias o en cosas personales — no tengo más tarea asignada y nadie me va a pedir cuentas de ese tiempo</span></label><label class="option"><input type="radio" name="q7" value="Reviso el entregable que acabo de hacer para ver si hay algo que pueda mejorar antes de cerrarlo — siempre se puede hacer algo mejor"><span class="option-text">Reviso el entregable que acabo de hacer para ver si hay algo que pueda mejorar antes de cerrarlo — siempre se puede hacer algo mejor</span></label></div></div><div class="q-block slider-block" data-competencia="Iniciativa y orientación al resultado" data-pregunta="¿Qué tan proactivo eres para buscar entender el contexto de negocio de las tareas que te asignan — no solo saber qué hacer sino para qué le sirve a la organización?"><span class="q-label slider">Automedición</span><div class="q-text">¿Qué tan proactivo eres para buscar entender el contexto de negocio de las tareas que te asignan — no solo saber qué hacer sino para qué le sirve a la organización?</div><div class="slider-container"><div class="slider-labels"><span>Hago lo que me piden sin preguntarme mucho para qué sirve</span><span>Siempre busco entender el propósito de lo que hago dentro del equipo y el negocio</span></div><input type="range" id="q8" min="1" max="5" value="3"><div class="slider-value" id="val_q8">3</div></div></div></div><div class="section"><div class="section-title">Competencias del Rol</div><div class="q-block" data-competencia="Desarrollo de productos de datos y documentación" data-pregunta="¿Cómo lo manejas?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Te pidieron documentar un pipeline de datos que ya existe. Al revisarlo, te das cuenta de que hay partes del código que no entiendes y no sabes bien qué hace ese pipeline en la práctica.</div><div class="q-text">¿Cómo lo manejas?</div><div class="options"><label class="option"><input type="radio" name="q9" value="Identifico específicamente qué partes no entiendo, busco en la documentación existente y en el código para entender la lógica, y lo que no puedo resolver solo se lo pregunto a mi compañero o líder con preguntas concretas"><span class="option-text">Identifico específicamente qué partes no entiendo, busco en la documentación existente y en el código para entender la lógica, y lo que no puedo resolver solo se lo pregunto a mi compañero o líder con preguntas concretas</span></label><label class="option"><input type="radio" name="q9" value="Documento lo que sí entiendo y dejo las partes confusas en blanco o con comentarios de &#39;por definir&#39; — mejor entregar algo incompleto que inventar"><span class="option-text">Documento lo que sí entiendo y dejo las partes confusas en blanco o con comentarios de 'por definir' — mejor entregar algo incompleto que inventar</span></label><label class="option"><input type="radio" name="q9" value="Documento basándome en lo que creo que hace el pipeline según el nombre de las funciones y las variables — si me equivoqué alguien lo va a corregir"><span class="option-text">Documento basándome en lo que creo que hace el pipeline según el nombre de las funciones y las variables — si me equivoqué alguien lo va a corregir</span></label></div></div><div class="q-block slider-block" data-competencia="Desarrollo de productos de datos y documentación" data-pregunta="¿Qué tan cómodo te sientes trabajando con SQL para consultar datos y entender qué contiene una tabla — sin que alguien te guíe paso a paso?"><span class="q-label slider">Automedición</span><div class="q-text">¿Qué tan cómodo te sientes trabajando con SQL para consultar datos y entender qué contiene una tabla — sin que alguien te guíe paso a paso?</div><div class="slider-container"><div class="slider-labels"><span>Apenas estoy aprendiendo, necesito mucho apoyo</span><span>Me siento seguro consultando y explorando datos con SQL de forma autónoma</span></div><input type="range" id="q10" min="1" max="5" value="3"><div class="slider-value" id="val_q10">3</div></div></div><div class="q-block" data-competencia="Desarrollo de productos de datos y documentación" data-pregunta="Al analizar un requerimiento de desarrollo que te asignó tu líder, te das cuenta de que no tienes claro cuál es el resultado esperado. ¿Qué haces antes de arrancar?"><span class="q-label quiz">Pregunta</span><div class="q-text">Al analizar un requerimiento de desarrollo que te asignó tu líder, te das cuenta de que no tienes claro cuál es el resultado esperado. ¿Qué haces antes de arrancar?</div><div class="options"><label class="option"><input type="radio" name="q11" value="Le pido a mi líder 15 minutos para alinear — le explico lo que entendí y le pregunto específicamente qué debería tener el entregable al terminar — así no pierdo tiempo construyendo algo diferente a lo que necesita"><span class="option-text">Le pido a mi líder 15 minutos para alinear — le explico lo que entendí y le pregunto específicamente qué debería tener el entregable al terminar — así no pierdo tiempo construyendo algo diferente a lo que necesita</span></label><label class="option"><input type="radio" name="q11" value="Arranco con lo que entendí y a la mitad del desarrollo le pregunto si voy bien — no quiero interrumpirlo antes de haber hecho algo"><span class="option-text">Arranco con lo que entendí y a la mitad del desarrollo le pregunto si voy bien — no quiero interrumpirlo antes de haber hecho algo</span></label><label class="option"><input type="radio" name="q11" value="Arranco con mi mejor interpretación y entrego al final — si hay ajustes los hago en la revisión"><span class="option-text">Arranco con mi mejor interpretación y entrego al final — si hay ajustes los hago en la revisión</span></label></div></div><div class="q-block" data-competencia="Aprendizaje técnico y manejo de herramientas" data-pregunta="¿Cómo lo atiendes?"><span class="q-label scenario">Escenario</span><div class="scenario-box">Tu líder te presentó a BigQuery y GCP como las principales herramientas del área. Llevas una semana y todavía sientes que no las dominas para trabajar de forma autónoma.</div><div class="q-text">¿Cómo lo atiendes?</div><div class="options"><label class="option"><input type="radio" name="q12" value="Identifico qué cosas específicas no sé hacer todavía, busco tutoriales y documentación oficial para practicarlas por mi cuenta, y cuando tengo dudas concretas las llevo al siguiente 1:1 con mi líder"><span class="option-text">Identifico qué cosas específicas no sé hacer todavía, busco tutoriales y documentación oficial para practicarlas por mi cuenta, y cuando tengo dudas concretas las llevo al siguiente 1:1 con mi líder</span></label><label class="option"><input type="radio" name="q12" value="Espero a que los proyectos del equipo me vayan enseñando — aprender haciendo es más efectivo que estudiar por mi cuenta fuera del trabajo"><span class="option-text">Espero a que los proyectos del equipo me vayan enseñando — aprender haciendo es más efectivo que estudiar por mi cuenta fuera del trabajo</span></label><label class="option"><input type="radio" name="q12" value="Le digo a mi líder que necesito capacitación formal antes de poder trabajar con esas herramientas — no quiero cometer errores por no saber usarlas"><span class="option-text">Le digo a mi líder que necesito capacitación formal antes de poder trabajar con esas herramientas — no quiero cometer errores por no saber usarlas</span></label></div></div><div class="q-block slider-block" data-competencia="Aprendizaje técnico y manejo de herramientas" data-pregunta="¿Qué tan cómodo te sientes usando Visual Studio Code o un editor de código para leer, entender y hacer cambios pequeños en scripts existentes — aunque no los hayas escrito tú?"><span class="q-label slider">Automedición</span><div class="q-text">¿Qué tan cómodo te sientes usando Visual Studio Code o un editor de código para leer, entender y hacer cambios pequeños en scripts existentes — aunque no los hayas escrito tú?</div><div class="slider-container"><div class="slider-labels"><span>Me cuesta mucho, aún no me siento seguro en un entorno de código</span><span>Me desenvuelvo con confianza y puedo explorar y modificar código de forma autónoma</span></div><input type="range" id="q13" min="1" max="5" value="3"><div class="slider-value" id="val_q13">3</div></div></div></div>
+    <div class="submit-area">
+      <button class="btn-submit" id="btnSubmit" onclick="submitForm()">Enviar evaluación</button>
+      <p class="required-note">Todas las preguntas son requeridas antes de enviar</p>
+    </div>
+  </div>
+  <div class="success" id="successMsg">
+    <div class="check">✅</div>
+    <h2>¡Evaluación enviada!</h2>
+    <p>Gracias por completar tu autoevaluación de competencias.<br>El equipo de RH revisará tus respuestas.</p>
+  </div>
+</div>
+
+<script>
+const SHEETDB_URL = 'https://sheetdb.io/api/v1/jo9ara9caqac2';
+const nombre = 'Juliaan Isaac Ornelas';
+const puesto = 'Practicante Transformación y Digital';
+const totalPreguntas = 13;
+
+document.querySelectorAll('.option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const radio = opt.querySelector('input[type=radio]');
+    const name = radio.name;
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.closest('.option').classList.remove('selected'));
+    radio.checked = true;
+    opt.classList.add('selected');
+    updateProgress();
+  });
+});
+
+document.querySelectorAll('input[type=range]').forEach(sl => {
+  sl.addEventListener('input', () => {
+    document.getElementById('val_' + sl.id).textContent = sl.value;
+    updateProgress();
+  });
+});
+
+function updateProgress() {
+  let answered = 0;
+  document.querySelectorAll('input[type=radio]:checked').forEach(() => answered++);
+  document.querySelectorAll('input[type=range]').forEach(sl => {
+    if(sl.dataset.touched === 'true') answered++;
+  });
+  const pct = Math.round((answered / totalPreguntas) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = answered + ' de ' + totalPreguntas + ' preguntas respondidas';
+}
+
+document.querySelectorAll('input[type=range]').forEach(sl => {
+  sl.addEventListener('change', () => { sl.dataset.touched = 'true'; updateProgress(); });
+});
+
+async function submitForm() {
+  const radios = document.querySelectorAll('.q-block:not(.slider-block) input[type=radio]');
+  const radioGroups = new Set();
+  radios.forEach(r => radioGroups.add(r.name));
+  let allAnswered = true;
+  radioGroups.forEach(name => {
+    if(!document.querySelector(`input[name="${name}"]:checked`)) allAnswered = false;
+  });
+  document.querySelectorAll('input[type=range]').forEach(sl => {
+    if(sl.dataset.touched !== 'true') allAnswered = false;
+  });
+  if(!allAnswered) { alert('Por favor responde todas las preguntas antes de enviar.'); return; }
+  
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  
+  const rows = [];
+  const ts = new Date().toLocaleString('es-MX');
+  
+  radioGroups.forEach(name => {
+    const checked = document.querySelector(`input[name="${name}"]:checked`);
+    const block = checked.closest('.q-block');
+    const competencia = block.dataset.competencia || '';
+    const pregunta = block.dataset.pregunta || '';
+    const respuesta = checked.value;
+    rows.push({Timestamp:ts, Nombre:nombre, Puesto:puesto, Competencia:competencia, Pregunta:pregunta, Tipo:'opcion', Respuesta:respuesta});
+  });
+  
+  document.querySelectorAll('input[type=range]').forEach(sl => {
+    const block = sl.closest('.q-block');
+    const competencia = block.dataset.competencia || '';
+    const pregunta = block.dataset.pregunta || '';
+    rows.push({Timestamp:ts, Nombre:nombre, Puesto:puesto, Competencia:competencia, Pregunta:pregunta, Tipo:'slider', Respuesta:sl.value + '/5'});
+  });
+  
+  try {
+    for(const row of rows) {
+      await fetch(SHEETDB_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({data:[row]})});
+    }
+    document.getElementById('formArea').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } catch(e) {
+    alert('Hubo un error al enviar. Intenta de nuevo.');
+    btn.disabled = false; btn.textContent = 'Enviar evaluación';
+  }
+}
+</script>
+</body>
+</html>
