@@ -114,7 +114,7 @@ function updateProgress() {
   let answered = 0;
   document.querySelectorAll('input[type=radio]:checked').forEach(() => answered++);
   document.querySelectorAll('input[type=range]').forEach(sl => {
-    if(sl.dataset.touched === 'true') answered++;
+    answered++;
   });
   const pct = Math.round((answered / totalPreguntas) * 100);
   document.getElementById('progressFill').style.width = pct + '%';
@@ -134,7 +134,7 @@ async function submitForm() {
     if(!document.querySelector(`input[name="${name}"]:checked`)) allAnswered = false;
   });
   document.querySelectorAll('input[type=range]').forEach(sl => {
-    if(sl.dataset.touched !== 'true') allAnswered = false;
+    
   });
   if(!allAnswered) { alert('Por favor responde todas las preguntas antes de enviar.'); return; }
   
