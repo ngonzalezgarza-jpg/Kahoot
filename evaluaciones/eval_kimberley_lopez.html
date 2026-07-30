@@ -133,9 +133,7 @@ async function submitForm() {
   radioGroups.forEach(name => {
     if(!document.querySelector(`input[name="${name}"]:checked`)) allAnswered = false;
   });
-  document.querySelectorAll('input[type=range]').forEach(sl => {
-    
-  });
+  // Sliders siempre cuentan como respondidos (valor predeterminado = 3)
   if(!allAnswered) { alert('Por favor responde todas las preguntas antes de enviar.'); return; }
   
   const btn = document.getElementById('btnSubmit');
